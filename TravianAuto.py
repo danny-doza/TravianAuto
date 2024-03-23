@@ -422,7 +422,7 @@ def get_resources_from_hero(driver, resource_type=-1):
                     By.CSS_SELECTOR, '.textButtonV2.buttonFramed.rectangle.withText.green'
                 )
 
-                time.sleep(0.3) # wait to allow time for value to load
+                time.sleep(1) # wait to allow time for value to load
                 driver.execute_script(JS_CLICK, button_transfer)
 
                 print(f"Successfully collected resource {resource_id} (amount={amount_to_collect}) from hero.")
@@ -1169,13 +1169,12 @@ with managed_scheduler() as scheduler:
 '''
 
 # %%
-''' init. and login to server (single account) '''
+''' init. and login to server (single account)
 input_site = 'https://ts2.x1.international.travian.com/dorf1.php'
 #input_site = input("Site:") # Commented out while testing
 
 input_port = input("Port:")
 
-''' begin scheduler tasks '''
 # !!! NO PROXY ADDED TO MANAGED_WEBDRIVER FUNC, ENSURE PROXY PORT USED TO SETUP ACCOUNT IS ADDED HERE TO AVOID BANS
 try:
     with managed_scheduler() as scheduler, managed_webdriver(input_port) as driver:
@@ -1236,6 +1235,7 @@ try:
                     pass
 except Exception as e:
     print(f"Error: {e}")
+'''
 
 # %%
 ''' init. and login to server (multiple accounts) '''
